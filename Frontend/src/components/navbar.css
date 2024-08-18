@@ -1,0 +1,129 @@
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: #445461;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+    max-width: fit-content;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+ul li {
+    padding: 0.5rem;
+    font-size: 0.999rem;
+    transition: all 0.2s;
+}
+
+ul li:hover {
+    cursor: pointer;
+    transform: translateY(2px);
+}
+
+ul li:active {
+    transform: translateY(4px);
+}
+
+ul li.active {
+    font-weight: bold;
+    color: #77a3c0;
+    /* Highlight color */
+}
+
+.progress-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #3498db;
+    /* Highlight color */
+    transition: width 0.3s ease;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(107, 196, 255, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+    }
+}
+
+.progress-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #496374;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+    animation: pulsate 1.5s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+    ul {
+        gap: 2.5vw;
+    }
+
+    ul li {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 50px;
+    }
+
+    ul {
+        gap: 4.5vw;
+    }
+
+    ul li {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .progress-indicator {
+        height: 2px;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar {
+        height: 50px;
+    }
+
+    ul {
+        gap: 2vw;
+        padding: 0 .5rem;
+    }
+
+    ul li {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .progress-indicator {
+        height: 2px;
+    }
+}

@@ -1,0 +1,181 @@
+/* Modal Background */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #1e2225;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    /* Fixed max-width */
+    width: 90%;
+    max-height: 90vh;
+    /* Limit height to 90% of viewport height */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    color: #fff;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transform: translateY(1.2px);
+}
+
+/* Modal Image */
+.modalImage {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+/* Project Link */
+.projectLink {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.projectLink:hover {
+    text-decoration: underline;
+}
+
+/* Modal Heading and Paragraph */
+.modal-content h2 {
+    font-size: 1.5rem;
+}
+
+.modal-content p {
+    font-size: 0.9rem;
+}
+
+/* Technologies Section */
+.technologies {
+    margin-top: 1.5rem;
+}
+
+.technologies h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.technologies ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.technologies li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and small laptops */
+@media (max-width: 1024px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .modal-content p {
+        font-size: 0.85rem;
+    }
+
+    .technologies h4 {
+        font-size: 1.1rem;
+    }
+
+    .technologies li {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        /* Reduced margin for smaller screens */
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 70%;
+        padding: 1rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content p {
+        font-size: 0.8rem;
+    }
+
+    .technologies h4 {
+        font-size: 1rem;
+    }
+
+    .technologies li {
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+        /* Further reduced margin for mobile screens */
+    }
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 75%;
+        padding: 0.8rem;
+    }
+
+    .modal-content h2 {
+        font-size: 1rem;
+    }
+
+    .modal-content p {
+        font-size: 0.75rem;
+    }
+
+    .technologies h4 {
+        font-size: 0.9rem;
+    }
+
+    .technologies li {
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
+        /* Smallest margin for very small screens */
+    }
+}

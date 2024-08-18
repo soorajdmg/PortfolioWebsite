@@ -1,0 +1,312 @@
+.about {
+    padding: 2rem;
+    background-color: #1e2225;
+    color: #f0f0f0;
+    font-family: monospace;
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5rem 0 0 2rem;
+    max-width: fit-content;
+    flex-wrap: wrap;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 3rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-container:hover .profile-image {
+    transform: scale(1.1);
+}
+
+.profile-info {
+    max-width: 600px;
+    margin-left: 2rem;
+}
+
+.profile-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.toggle-button {
+    color: #fff;
+    font-family: monospace;
+    font-size: 1.2rem;
+
+    border: none;
+    background: transparent;
+
+    margin-top: 1.5rem;
+    max-width: fit-content;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    cursor: pointer;
+    transform: translateY(3px);
+}
+
+.toggle-button:active {
+    transform: translateY(5px);
+}
+
+.arrowIcon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: #fff;
+    position: static;
+    flex-basis: 1rem;
+    margin: 0.65rem 0 0 0;
+    transition: all 0.3s;
+}
+
+.toggle-button:hover .arrowIcon {
+    transform: translateX(5px);
+}
+
+.toggle-button:active .arrowIcon {
+    transform: translateX(7px);
+}
+
+.toggle-button1.active .about-details {
+    animation: collapseAnimation 0.5s ease-in-out forwards;
+}
+
+.toggle-button.active .about-details {
+    animation: expandAnimation 0.5s ease-in-out forwards;
+}
+
+.toggle-button.inactive+.about-details {
+    animation: collapseAnimation 0.5s ease-in-out forwards;
+}
+
+.about-details {
+    overflow: hidden;
+    margin: 0 6rem 0 8rem;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.about-details.show {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 1rem;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out 0.1s;
+    animation: expandAnimation 0.5s ease-in-out;
+}
+
+.about-details.show .about-details-content {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0.3s;
+}
+
+.about-details h3 {
+    margin-top: 1.5rem;
+    margin: 1.5rem 0 0 0;
+    font-size: 1.5rem;
+}
+
+.about-details p {
+    margin: 1rem 0 1.2rem 0;
+    line-height: 1.2rem;
+    font-size: 1rem;
+}
+
+.about-details:not(.show) {
+    max-height: 0;
+    opacity: 0;
+}
+
+@keyframes expandAnimation {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 1000px;
+        /* Or whatever the content’s height is */
+    }
+}
+
+@keyframes collapseAnimation {
+    from {
+        opacity: 1;
+        max-height: 1000px;
+        /* Or whatever the content’s height is */
+    }
+
+    to {
+        opacity: 0;
+        max-height: 0;
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .about-header {
+        margin: 3rem 1rem;
+        /* Adjust margins for smaller screens */
+    }
+
+    .profile-container {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 2rem;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-info p {
+        font-size: 0.9rem;
+    }
+
+    .toggle-button {
+        font-size: 0.9rem;
+    }
+
+    .arrowIcon {
+        margin: 0.5rem 0 0 0;
+        font-size: 1.1rem;
+    }
+
+    .about-details {
+        margin: 0 3.5rem 0 4.5rem;
+    }
+
+    .about-details h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-details p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 2.5rem;
+        border: none;
+    }
+
+    .about-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile-info {
+        margin: 1rem 0 0 1rem;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-info h2 {
+        font-size: 1.2rem;
+    }
+
+    .profile-info p {
+        font-size: 0.8rem;
+    }
+
+    .toggle-button {
+        font-size: 0.8rem;
+    }
+
+    .arrowIcon {
+        font-size: 1rem;
+    }
+
+    .about-details {
+        margin: 0 0.5rem 0 1rem;
+        padding: 0;
+    }
+
+    .about-details h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-details p {
+        font-size: 0.7rem;
+    }
+
+    .about-details-collapsed {
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-image {
+        margin: auto;
+    }
+
+    .profile-info {
+        margin: auto;
+        text-align: center;
+    }
+
+    .profile-info h2 {
+        margin: auto;
+        margin-bottom: 0.5rem;
+        align-items: center;
+    }
+
+    .profile-info p {
+        margin: auto;
+        margin-bottom: 1rem;
+        align-items: center;
+    }
+
+    .toggle-button {
+        margin: auto;
+    }
+
+    .about-details {
+        text-align: center;
+    }
+}

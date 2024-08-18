@@ -1,0 +1,205 @@
+.contact {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    background-color: #1e2225;
+    color: #ecf3f9;
+    font-family: monospace;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #393d43;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contactText {
+    max-width: fit-content;
+    margin: 5.2rem 0 1.5rem 0;
+    font-size: 3.8rem;
+}
+
+.contactForm {
+    width: 100%;
+    max-width: 600px;
+    background: #2a2d32;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+.formGroup input,
+.formGroup textarea {
+    width: 97%;
+    padding: 0.56em;
+    font-family: monospace;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    background: #3a3d42;
+    color: #ecf3f9;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    caret-color: #858585;
+    transition: all 0.3s ease;
+}
+
+.formGroup input:hover,
+.formGroup textarea:hover {
+    outline: none;
+    box-shadow: 0 0 5px #80899380;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    font-family: monospace;
+    outline: none;
+    box-shadow: 0 0 5px #53595f80;
+}
+
+.formGroup input:-webkit-autofill,
+.formGroup textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 35px #3a3d42 inset !important;
+    -webkit-text-fill-color: #ecf3f9 !important;
+    font-family: monospace !important;
+    font-size: 1.1rem !important;
+}
+
+.submitButton {
+    position: relative;
+    width: 99.5%;
+    padding: 0.75rem;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #30363b, #4b555d);
+    background: linear-gradient(45deg, #262f37, #445461);
+
+    color: #ecf3f9;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.submitButton:hover {
+    transform: scale(1.01);
+}
+
+.submitButton.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+}
+
+.submitButton.loading .loader {
+    display: inline-block;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    /* Adjust size to fit button better */
+    height: 15px;
+    /* Adjust size to fit button better */
+    border: 3.5px solid #ecf3f933;
+    border-top: 3.5px solid #8e929533;
+    border-radius: 50%;
+    animation: spin89345 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin89345 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.submitButton.loading span {
+    visibility: hidden;
+}
+
+.statusText {
+    font-size: 1rem;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .contactText {
+        font-size: 2.5rem;
+        /* Adjust font size for smaller screens */
+    }
+
+    .contactForm {
+        width: 80%;
+        padding: 1rem;
+        /* Reduce padding on smaller screens */
+    }
+
+    .formGroup input,
+    .formGroup textarea {
+        font-size: 1rem;
+        /* Adjust font size for inputs and textareas */
+    }
+
+    .submitButton {
+        font-size: 1rem;
+        /* Adjust font size for the submit button */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        height: 80vh;
+    }
+
+    .contactText {
+        font-size: 1.8rem;
+    }
+
+    .contactForm {
+        padding: 0.75rem;
+    }
+
+    .formGroup label {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .formGroup input,
+    .formGroup textarea {
+        font-size: 0.9rem;
+    }
+
+    .submitButton {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400) {
+    .contact {
+        height: 70vh;
+    }
+}

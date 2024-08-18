@@ -1,0 +1,174 @@
+.work {
+    width: 100%;
+    padding-top: 3rem;
+    background-color: #1e2225;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 90vh;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #393d43;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.workText {
+    margin: 2rem 0 2rem 5rem;
+    font-size: 5.5rem;
+}
+
+.projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6rem;
+    justify-content: center;
+    padding: 0 2rem;
+    margin: 1rem auto 0 auto;
+    max-width: 100%;
+}
+
+.projectCard {
+    background: linear-gradient(45deg, #2c3136, #4b555d);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 13rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.projectCard:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.projectImage {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.projectContent {
+    padding: 1rem;
+}
+
+.projectTitle {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.projectDescription {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.projectLink {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.projectLink:hover {
+    text-decoration: underline;
+}
+
+.arrowIcon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.projectCard:hover .arrowIcon {
+    transform: translateX(5px);
+}
+
+.seeMoreButton {
+    font-size: 1.2rem;
+    border: none;
+    background: transparent;
+    max-width: fit-content;
+    display: inline-block;
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.seeMoreButton:hover {
+    cursor: pointer;
+    transform: translateY(3px);
+}
+
+.seeMoreButton:active {
+    transform: translateY(5px);
+}
+
+.seeMoreButton .arrowIcon {
+    font-size: 2rem;
+    color: #fff;
+    flex-basis: 1rem;
+    margin: 0.65rem 0 0 0;
+    transition: all 0.3s;
+}
+
+.seeMoreButton:hover .arrowIcon {
+    transform: translateX(5px);
+}
+
+.seeMoreButton:active .arrowIcon {
+    transform: translateX(7px);
+}
+
+@media (max-width: 1200px) {
+    .workText {
+        font-size: 4rem;
+        margin: 2rem 0 2rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .work {
+        padding-top: 2rem;
+        min-height: auto;
+    }
+
+    .workText {
+        font-size: 3.5rem;
+        margin: 2rem 0 2rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .work {
+        padding-top: 1.5rem;
+        align-items: center;
+    }
+
+    .workText {
+        font-size: 2.5rem;
+        margin: 1rem 0;
+        margin: 1.5rem 0 1rem 0;
+    }
+
+    .arrowIcon {}
+}
+
+@media (max-width: 400px) {
+    .work {
+        padding-top: 1rem;
+    }
+
+    .workText {
+        font-size: 2rem;
+    }
+}
