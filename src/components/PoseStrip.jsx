@@ -6,46 +6,147 @@ import proPose from '../assets/images/poses/pro-pose.png'
 import shyPose from '../assets/images/poses/shy-pose.png'
 import thinkPose from '../assets/images/poses/think-pose.png'
 import wavePose from '../assets/images/poses/wave-pose.png'
-// import winkPose from '../assets/images/poses/wink-pose.png'
 import './PoseStrip.css'
 
 const poses = [cheerPose, lovePose, phonePose, proPose, shyPose, thinkPose, wavePose]
-// Duplicate twice to ensure full-width coverage at any screen size
-const row = [...poses, ...poses, ...poses]
+const row = [...poses, ...poses, ...poses, ...poses, ...poses]
 
-let dropIdCounter = 0
+const BALL_COUNT = 50
+const GRAVITY = 0.18
+const MAX_VY = 5
 
-function spawnDrops(src) {
-  const count = 18
-  const drops = []
-  for (let i = 0; i < count; i++) {
-    const size = 50 + Math.random() * 70          // 50–120px
-    const x = Math.random() * 100                 // % across viewport
-    const delay = Math.random() * 1.4             // stagger
-    const duration = 1.8 + Math.random() * 1.6   // fall speed
-    const rotation = (Math.random() - 0.5) * 50  // -25 to +25 deg tilt
-    const swayX = (Math.random() - 0.5) * 80     // horizontal drift
-    const opacity = 0.55 + Math.random() * 0.45  // 0.55–1
-    const shape = Math.random()                   // vary border-radius slightly
-    drops.push({
-      id: ++dropIdCounter,
+function buildBalls(src) {
+  const vw = window.innerWidth
+  const sizes = []
+
+  // Pre-place balls with no overlap using a simple rejection approach
+  const placed = []
+  let attempts = 0
+  while (placed.length < BALL_COUNT && attempts < 3000) {
+    attempts++
+    const r = 28 + Math.random() * 34       // radius 28–62px → diameter 56–124px
+    const x = r + Math.random() * (vw - r * 2)
+    const y = -r - Math.random() * 300      // start above viewport, spread vertically
+
+    // Check no overlap with already-placed balls
+    let ok = true
+    for (const p of placed) {
+      const dx = p.x - x
+      const dy = p.y - y
+      const minDist = p.r + r + 2
+      if (dx * dx + dy * dy < minDist * minDist) { ok = false; break }
+    }
+    if (!ok) continue
+
+    const spin = (Math.random() - 0.5) * 1.2  // deg/frame spin
+    placed.push({
+      id: placed.length,
       src,
-      size,
+      r,
       x,
-      delay,
-      duration,
-      rotation,
-      swayX,
-      opacity,
-      shape,
+      y,
+      vx: (Math.random() - 0.5) * 2.5,
+      vy: 2 + Math.random() * 2,              // initial downward velocity
+      angle: Math.random() * 360,
+      spin,
+      opacity: 0.7 + Math.random() * 0.3,
     })
+    sizes.push(r)
   }
-  return drops
+  return placed
+}
+
+// Resolve circle-circle overlap and exchange velocity components
+function resolveCollisions(balls) {
+  for (let i = 0; i < balls.length; i++) {
+    for (let j = i + 1; j < balls.length; j++) {
+      const a = balls[i], b = balls[j]
+      const dx = b.x - a.x
+      const dy = b.y - a.y
+      const dist2 = dx * dx + dy * dy
+      const minDist = a.r + b.r
+      if (dist2 >= minDist * minDist || dist2 === 0) continue
+
+      const dist = Math.sqrt(dist2)
+      const overlap = (minDist - dist) / 2
+      const nx = dx / dist, ny = dy / dist
+
+      // Push apart
+      a.x -= nx * overlap
+      a.y -= ny * overlap
+      b.x += nx * overlap
+      b.y += ny * overlap
+
+      // Exchange velocity along collision normal (equal mass)
+      const dvx = a.vx - b.vx
+      const dvy = a.vy - b.vy
+      const dot = dvx * nx + dvy * ny
+      if (dot > 0) {
+        const impulse = dot * 0.9   // slight energy loss per collision
+        a.vx -= impulse * nx
+        a.vy -= impulse * ny
+        b.vx += impulse * nx
+        b.vy += impulse * ny
+      }
+    }
+  }
+}
+
+function usePhysicsBalls() {
+  const [balls, setBalls] = useState(null)
+  const rafRef = useRef(null)
+  const stateRef = useRef(null)   // mutable physics state, not React state
+
+  const launch = useCallback((src) => {
+    // Cancel any running simulation
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+
+    const initial = buildBalls(src)
+    stateRef.current = initial.map(b => ({ ...b }))
+    setBalls(stateRef.current.map(b => ({ ...b })))  // initial render
+
+    const vh = window.innerHeight
+
+    const tick = () => {
+      const bs = stateRef.current
+      if (!bs) return
+
+      // Physics step
+      for (const b of bs) {
+        b.vy = Math.min(b.vy + GRAVITY, MAX_VY)
+        b.x += b.vx
+        b.y += b.vy
+        b.angle += b.spin
+      }
+
+      resolveCollisions(bs)
+
+      // Snapshot for React render — shallow copy each ball object
+      setBalls(bs.map(b => ({ ...b })))
+
+      // Stop once every ball has fully exited the bottom
+      if (bs.every(b => b.y - b.r > vh)) {
+        setBalls(null)
+        stateRef.current = null
+        return
+      }
+
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    rafRef.current = requestAnimationFrame(tick)
+  }, [])
+
+  useEffect(() => () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+  }, [])
+
+  return { balls, launch }
 }
 
 export default function PoseStrip() {
   const rowRef = useRef(null)
-  const [drops, setDrops] = useState([])
+  const { balls, launch } = usePhysicsBalls()
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,38 +163,22 @@ export default function PoseStrip() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handlePoseClick = useCallback((src) => {
-    const newDrops = spawnDrops(src)
-    setDrops(prev => [...prev, ...newDrops])
-    // clean up after animations finish
-    const maxLife = Math.max(...newDrops.map(d => (d.delay + d.duration) * 1000)) + 400
-    setTimeout(() => {
-      const ids = new Set(newDrops.map(d => d.id))
-      setDrops(prev => prev.filter(d => !ids.has(d.id)))
-    }, maxLife)
-  }, [])
-
   return (
     <>
-      {/* Rain overlay — rendered at root level so it covers the whole viewport */}
-      {drops.length > 0 && (
+      {balls && (
         <div className="pose-rain-layer" aria-hidden="true">
-          {drops.map(drop => (
+          {balls.map(ball => (
             <div
-              key={drop.id}
-              className="pose-rain-drop"
+              key={ball.id}
+              className="pose-physics-ball"
               style={{
-                '--drop-x': `${drop.x}vw`,
-                '--drop-size': `${drop.size}px`,
-                '--drop-delay': `${drop.delay}s`,
-                '--drop-duration': `${drop.duration}s`,
-                '--drop-rotation': `${drop.rotation}deg`,
-                '--drop-sway': `${drop.swayX}px`,
-                '--drop-opacity': drop.opacity,
-                '--drop-radius': `${40 + drop.shape * 20}%`,
+                width: ball.r * 2,
+                height: ball.r * 2,
+                transform: `translate(${ball.x - ball.r}px, ${ball.y - ball.r}px) rotate(${ball.angle}deg)`,
+                opacity: ball.opacity,
               }}
             >
-              <img src={drop.src} alt="" />
+              <img src={ball.src} alt="" />
             </div>
           ))}
         </div>
@@ -105,7 +190,7 @@ export default function PoseStrip() {
             <div
               className="pose-circle"
               key={i}
-              onClick={() => handlePoseClick(src)}
+              onClick={() => launch(src)}
               style={{ cursor: 'pointer' }}
             >
               <img src={src} alt="pose" />

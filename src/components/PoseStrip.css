@@ -42,30 +42,7 @@
   }
 }
 
-/* ── Pose Rain ───────────────────────────────────────────── */
-@keyframes pose-fall {
-  0% {
-    transform:
-      translateX(var(--drop-x))
-      translateY(-140px)
-      rotate(var(--drop-rotation));
-    opacity: 0;
-  }
-  8% {
-    opacity: var(--drop-opacity);
-  }
-  80% {
-    opacity: var(--drop-opacity);
-  }
-  100% {
-    transform:
-      translateX(calc(var(--drop-x) + var(--drop-sway)))
-      translateY(110vh)
-      rotate(calc(var(--drop-rotation) * 1.6));
-    opacity: 0;
-  }
-}
-
+/* ── Pose Physics Rain ───────────────────────────────────── */
 .pose-rain-layer {
   position: fixed;
   inset: 0;
@@ -74,24 +51,26 @@
   overflow: hidden;
 }
 
-.pose-rain-drop {
+.pose-physics-ball {
   position: absolute;
   top: 0;
   left: 0;
-  width: var(--drop-size);
-  height: var(--drop-size);
-  border-radius: var(--drop-radius);
+  border-radius: 50%;
   overflow: hidden;
-  border: 2.5px solid rgba(242, 139, 0, 0.55);
-  box-shadow: 0 4px 18px rgba(242, 139, 0, 0.18);
-  opacity: 0;
-  animation: pose-fall var(--drop-duration) cubic-bezier(0.4, 0.1, 0.6, 1) var(--drop-delay) forwards;
+  border: 2.5px solid rgba(242, 139, 0, 0.6);
+  box-shadow: 0 4px 20px rgba(242, 139, 0, 0.2);
   will-change: transform, opacity;
+  transition: opacity 0.6s ease;
 }
 
-.pose-rain-drop img {
+.pose-physics-ball--fade {
+  opacity: 0 !important;
+}
+
+.pose-physics-ball img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  display: block;
 }
