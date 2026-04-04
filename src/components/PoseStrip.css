@@ -1,0 +1,43 @@
+.pose-strip {
+  background: var(--bg-primary);
+  padding: 2.5rem 0;
+  overflow: hidden;
+}
+
+.pose-row {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
+.pose-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid var(--card-border);
+  background: var(--bg-secondary);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.pose-circle:hover {
+  border-color: var(--accent-orange);
+  transform: scale(1.08);
+}
+
+.pose-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+@media (max-width: 600px) {
+  .pose-circle {
+    width: 80px;
+    height: 80px;
+  }
+}

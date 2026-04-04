@@ -1,0 +1,65 @@
+.project-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: default;
+}
+
+.project-card:hover {
+  box-shadow: 0 16px 40px rgba(26, 26, 26, 0.12);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(251, 197, 41, 0.18);
+  border: 1px solid rgba(251, 197, 41, 0.5);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.3px;
+}
+
+.card-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.card-links a {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  cursor: none;
+}
+
+.card-links a:hover {
+  color: var(--accent-blue);
+  transform: translateY(-2px);
+}

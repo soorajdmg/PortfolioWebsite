@@ -1,0 +1,38 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: #fef3e2;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+}
+
+.loader-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+}
+
+.loader-dot {
+  color: var(--accent-orange);
+}
+
+.loader-track {
+  width: clamp(160px, 30vw, 280px);
+  height: 3px;
+  background: rgba(26, 26, 26, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: var(--accent-orange);
+  border-radius: 2px;
+  transform-origin: left;
+}

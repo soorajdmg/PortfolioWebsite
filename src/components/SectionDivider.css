@@ -1,0 +1,14 @@
+.section-divider {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.section-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.section-divider.flip {
+  transform: scaleY(-1);
+}

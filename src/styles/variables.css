@@ -1,0 +1,42 @@
+:root {
+  /* Colors */
+  --bg-primary: #fcf7f1;
+  --bg-secondary: #f5ede2;
+  --accent-yellow: #fbc529;
+  --accent-blue: #0577dd;
+  --accent-orange: #f28b00;
+  --accent-sky: #40b4e5;
+  --text-primary: #1a1a1a;
+  --text-muted: #6b5c4e;
+  --card-bg: #ffffff;
+  --card-border: rgba(26, 26, 26, 0.1);
+
+  /* Solid accent fills (no gradients) */
+  --accent-primary: var(--accent-blue);
+  --accent-secondary: var(--accent-orange);
+
+  /* Fonts */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Spacing */
+  --section-padding: 100px 0;
+  --container-max: 1200px;
+  --container-padding: 0 2rem;
+
+  /* Shadows */
+  --shadow-glow-blue: 0 4px 20px rgba(5, 119, 221, 0.25);
+  --shadow-glow-orange: 0 4px 20px rgba(242, 139, 0, 0.25);
+  --shadow-glow-yellow: 0 4px 20px rgba(251, 197, 41, 0.3);
+  --shadow-card: 0 4px 16px rgba(26, 26, 26, 0.08);
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 50px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.35s ease;
+}
