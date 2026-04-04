@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-scroll'
 import { motion } from 'framer-motion'
+import { useLenisContext } from '../context/LenisContext'
 import './Navbar.css'
 
 const navLinks = [
@@ -14,6 +14,7 @@ export default function Navbar({ logoVisible = false }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const lenisRef = useLenisContext()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -40,6 +41,12 @@ export default function Navbar({ logoVisible = false }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  function scrollTo(id) {
+    const el = document.getElementById(id)
+    if (el) lenisRef.current?.scrollTo(el, { offset: -80 })
+    setMenuOpen(false)
+  }
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
@@ -54,16 +61,12 @@ export default function Navbar({ logoVisible = false }) {
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navLinks.map(({ label, to }) => (
             <li key={to}>
-              <Link
-                to={to}
-                smooth={false}
-                duration={0}
-                offset={-80}
+              <button
                 className={activeSection === to ? 'active' : ''}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => scrollTo(to)}
               >
                 {label}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
