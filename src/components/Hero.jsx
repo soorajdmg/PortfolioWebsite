@@ -1,19 +1,13 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-scroll'
 import FloatingShapes from './FloatingShapes'
 import illustration from '../assets/images/pro-me.png'
 import useMagnet from '../hooks/useMagnet'
-import { useLenisContext } from '../context/LenisContext'
 import './Hero.css'
 
 export default function Hero() {
   const magnetPrimary = useMagnet(12)
   const magnetSecondary = useMagnet(12)
-  const lenisRef = useLenisContext()
-
-  function scrollToProjects() {
-    const el = document.getElementById('projects')
-    if (el) lenisRef.current?.scrollTo(el, { offset: -80 })
-  }
 
   return (
     <section className="hero" id="home">
@@ -38,13 +32,14 @@ export default function Hero() {
           </p>
 
           <div className="hero-ctas">
-            <button
-              className="btn btn-primary"
-              ref={magnetPrimary.ref}
-              onMouseMove={magnetPrimary.onMouseMove}
-              onMouseLeave={magnetPrimary.onMouseLeave}
-              onClick={scrollToProjects}
-            >View Projects</button>
+            <Link to="projects" smooth={false} duration={0} offset={-80}>
+              <button
+                className="btn btn-primary"
+                ref={magnetPrimary.ref}
+                onMouseMove={magnetPrimary.onMouseMove}
+                onMouseLeave={magnetPrimary.onMouseLeave}
+              >View Projects</button>
+            </Link>
             <a
               href="mailto:soorajmurugaraj@gmail.com"
               className="btn btn-secondary"

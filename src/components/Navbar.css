@@ -67,8 +67,7 @@
   transform: translateX(-50%) scaleY(1);
 }
 
-.nav-links li a,
-.nav-links li button {
+.nav-links li a {
   font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
@@ -81,13 +80,10 @@
   border: 3px solid transparent;
   transition: color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform 0.22s ease;
   transform-origin: top center;
-  background: none;
 }
 
 .nav-links li a:hover,
-.nav-links li a.active,
-.nav-links li button:hover,
-.nav-links li button.active {
+.nav-links li a.active {
   color: var(--text-muted);
   border-color: #a8e063;
   box-shadow: 0 0 0 2px #a8e063;
@@ -148,8 +144,7 @@
     right: 0;
   }
 
-  .nav-links li a,
-  .nav-links li button {
+  .nav-links li a {
     font-size: 1.1rem;
   }
 }
