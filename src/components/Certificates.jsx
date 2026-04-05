@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 import './Certificates.css'
 
 const certificates = [
@@ -89,7 +90,7 @@ export default function Certificates() {
                         className="bento-credential-link"
                         onClick={e => e.stopPropagation()}
                       >
-                        View Credential ↗
+                        View Credential <ArrowUpRight size={14} />
                       </a>
                     )}
                   </div>

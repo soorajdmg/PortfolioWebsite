@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import {
   FaGithub,
@@ -99,7 +100,7 @@ export default function ContactPage() {
               <span className="cp-card-label">{card.label}</span>
               <span className="cp-card-sub">{card.sub}</span>
             </div>
-            <span className="cp-card-arrow">↗</span>
+            <ArrowUpRight className="cp-card-arrow" />
           </motion.a>
         ))}
       </div>
