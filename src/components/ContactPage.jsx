@@ -9,67 +9,71 @@ import {
 } from 'react-icons/fa'
 import './ContactPage.css'
 
-const contactMethods = [
+const cards = [
   {
     icon: <FaEnvelope />,
     label: 'Email',
-    value: 'soorajmurugaraj@gmail.com',
+    sub: 'soorajmurugaraj@gmail.com',
     href: 'mailto:soorajmurugaraj@gmail.com',
-    description: 'Best for project inquiries & opportunities',
-    accent: 'orange',
+    bg: '#f28b00',
+    color: '#fff',
+    rotate: -12,
+    x: -260,
+    y: 30,
+    z: 1,
   },
   {
     icon: <FaLinkedin />,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/soorajmurugaraj',
+    sub: '/in/soorajmurugaraj',
     href: 'https://linkedin.com/in/soorajmurugaraj',
-    description: 'Connect professionally',
-    accent: 'blue',
-  },
-  {
-    icon: <FaGithub />,
-    label: 'GitHub',
-    value: 'github.com/soorajdmg',
-    href: 'https://github.com/soorajdmg',
-    description: 'See my open-source work',
-    accent: 'dark',
-  },
-  {
-    icon: <FaTwitter />,
-    label: 'Twitter / X',
-    value: '@soorajdmg',
-    href: 'https://x.com/soorajdmg',
-    description: 'Quick thoughts & updates',
-    accent: 'sky',
+    bg: '#0577dd',
+    color: '#fff',
+    rotate: -6,
+    x: -130,
+    y: 10,
+    z: 2,
   },
   {
     icon: <FaFileAlt />,
     label: 'Resume',
-    value: 'View / Download CV',
+    sub: 'View / Download CV',
     href: '/resume.pdf',
-    description: 'Full work history & skills',
-    accent: 'yellow',
+    bg: '#fbc529',
+    color: '#1a1a1a',
+    rotate: 0,
+    x: 0,
+    y: 0,
+    z: 3,
+  },
+  {
+    icon: <FaTwitter />,
+    label: 'Twitter / X',
+    sub: '@soorajdmg',
+    href: 'https://x.com/soorajdmg',
+    bg: '#40b4e5',
+    color: '#fff',
+    rotate: 6,
+    x: 130,
+    y: 10,
+    z: 2,
+  },
+  {
+    icon: <FaGithub />,
+    label: 'GitHub',
+    sub: 'github.com/soorajdmg',
+    href: 'https://github.com/soorajdmg',
+    bg: '#1a1a1a',
+    color: '#fff',
+    rotate: 12,
+    x: 260,
+    y: 30,
+    z: 1,
   },
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.08, ease: 'easeOut' },
-  }),
-}
-
 export default function ContactPage() {
-  const [copied, setCopied] = useState(false)
-
-  function copyEmail() {
-    navigator.clipboard.writeText('soorajmurugaraj@gmail.com').then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }
+  const [hovered, setHovered] = useState(null)
 
   return (
     <section id="contact" className="contact-page">
@@ -84,50 +88,41 @@ export default function ContactPage() {
           <h2 className="section-title">Contact.</h2>
         </motion.div>
 
-        <div className="contact-page-grid">
-          {contactMethods.map((method, i) => (
+        <div className="cp-fan">
+          {cards.map((card, i) => (
             <motion.a
-              key={method.label}
-              href={method.href}
-              target={method.href.startsWith('mailto') ? '_self' : '_blank'}
+              key={card.label}
+              href={card.href}
+              target={card.href.startsWith('mailto') ? '_self' : '_blank'}
               rel="noopener noreferrer"
-              className={`contact-card contact-card--${method.accent}`}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              className="cp-card"
+              style={{
+                background: card.bg,
+                color: card.color,
+                zIndex: hovered === i ? 10 : card.z,
+              }}
+              initial={{ opacity: 0, y: 60, rotate: card.rotate, x: card.x }}
+              whileInView={{ opacity: 1, y: card.y, rotate: card.rotate, x: card.x }}
               viewport={{ once: true }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.55, delay: i * 0.08, ease: 'easeOut' }}
+              animate={{
+                rotate: hovered === i ? 0 : card.rotate,
+                y: hovered === i ? -28 : card.y,
+                x: card.x,
+                scale: hovered === i ? 1.06 : 1,
+              }}
+              onHoverStart={() => setHovered(i)}
+              onHoverEnd={() => setHovered(null)}
             >
-              <div className="contact-card-icon">{method.icon}</div>
-              <div className="contact-card-body">
-                <span className="contact-card-label">{method.label}</span>
-                <span className="contact-card-value">{method.value}</span>
-                <span className="contact-card-desc">{method.description}</span>
+              <div className="cp-card-icon">{card.icon}</div>
+              <div className="cp-card-body">
+                <span className="cp-card-label">{card.label}</span>
+                <span className="cp-card-sub">{card.sub}</span>
               </div>
-              <div className="contact-card-arrow">↗</div>
+              <span className="cp-card-arrow">↗</span>
             </motion.a>
           ))}
         </div>
-
-        <motion.div
-          className="contact-page-email-bar"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <span className="email-bar-label">Or just copy the email</span>
-          <div className="email-bar-row">
-            <span className="email-bar-address">soorajmurugaraj@gmail.com</span>
-            <button
-              className={`email-bar-copy ${copied ? 'copied' : ''}`}
-              onClick={copyEmail}
-            >
-              {copied ? 'Copied!' : 'Copy'}
-            </button>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
