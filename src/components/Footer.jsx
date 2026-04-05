@@ -2,8 +2,8 @@ import './Footer.css'
 
 const now = [
   { label: 'building', value: 'Pennywise', note: 'AI finance companion' },
-  { label: 'reading', value: 'Gods, Guns and Missionaries' },
-  { label: 'status', value: 'Open to opportunities', highlight: true },
+  { label: 'reading',  value: 'Gods, Guns and Missionaries' },
+  { label: 'status',   value: 'Open to opportunities', highlight: true },
 ]
 
 export default function Footer() {
@@ -21,11 +21,13 @@ export default function Footer() {
             {now.map(({ label, value, note, highlight }) => (
               <li key={label} className="footer-now-item">
                 <span className="footer-now-label">{label}</span>
-                <span className={`footer-now-value ${highlight ? 'footer-now-value--open' : ''}`}>
-                  {highlight && <span className="footer-now-dot" />}
-                  {value}
-                </span>
-                {note && <span className="footer-now-note">{note}</span>}
+                <div className="footer-now-body">
+                  <span className={`footer-now-value ${highlight ? 'footer-now-value--open' : ''}`}>
+                    {highlight && <span className="footer-now-dot" />}
+                    {value}
+                  </span>
+                  {note && <span className="footer-now-note">{note}</span>}
+                </div>
               </li>
             ))}
           </ul>
