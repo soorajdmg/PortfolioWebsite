@@ -59,7 +59,11 @@
 }
 
 .footer-now-item:first-child {
-  border-top: 1px solid var(--card-border);
+  border-top: none;
+}
+
+.footer-now-item:last-child {
+  border-bottom: none;
 }
 
 .footer-now-label {
@@ -134,5 +138,10 @@
 
   .footer-tagline {
     max-width: 100%;
+  }
+
+  .footer-right {
+    width: 100%;
+    align-items: flex-start;
   }
 }
