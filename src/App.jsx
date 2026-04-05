@@ -9,7 +9,6 @@ import Certificates from './components/Certificates'
 import ContactPage from './components/ContactPage'
 import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
-import CowButton from './components/CowButton'
 import PageLoader from './components/PageLoader'
 import { LayoutGroup } from 'framer-motion'
 import { useState } from 'react'
@@ -41,7 +40,6 @@ function App() {
           <ContactPage />
         </main>
         <Footer />
-        <CowButton />
       </LayoutGroup>
     </LenisContext.Provider>
   )
