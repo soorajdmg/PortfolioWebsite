@@ -6,7 +6,7 @@
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 3rem;
   padding-top: 3rem;
   padding-bottom: 2.5rem;
