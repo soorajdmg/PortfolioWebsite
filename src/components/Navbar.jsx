@@ -6,8 +6,8 @@ import './Navbar.css'
 const navLinks = [
   { label: 'About', to: 'about' },
   { label: 'Projects', to: 'projects' },
-  { label: 'Skills', to: 'skills' },
   { label: 'Certificates', to: 'certificates' },
+  { label: 'Contact', to: 'contact' },
 ]
 
 export default function Navbar({ logoVisible = false }) {

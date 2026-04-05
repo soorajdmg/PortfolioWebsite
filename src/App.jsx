@@ -6,6 +6,7 @@ import Projects from './components/Projects'
 import PoseStrip from './components/PoseStrip'
 import Skills from './components/Skills'
 import Certificates from './components/Certificates'
+import ContactPage from './components/ContactPage'
 import Footer from './components/Footer'
 import SectionDivider from './components/SectionDivider'
 import CowButton from './components/CowButton'
@@ -36,6 +37,8 @@ function App() {
           <Skills />
           <SectionDivider fromColor="var(--bg-secondary)" toColor="var(--bg-primary)" />
           <Certificates />
+          <SectionDivider fromColor="var(--bg-primary)" toColor="var(--bg-secondary)" />
+          <ContactPage />
         </main>
         <Footer />
         <CowButton />

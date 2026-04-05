@@ -1,0 +1,189 @@
+.contact-page {
+  background: var(--bg-secondary);
+  padding: var(--section-padding);
+}
+
+/* ── Grid ─────────────────────────────────── */
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Card ─────────────────────────────────── */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.4rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition-med),
+    border-color var(--transition-med);
+  cursor: none;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  border-radius: inherit;
+}
+
+.contact-card:hover {
+  box-shadow: var(--shadow-card);
+  border-color: rgba(26, 26, 26, 0.18);
+}
+
+
+/* icon */
+.contact-card-icon {
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.contact-card--orange .contact-card-icon { color: var(--accent-orange); }
+.contact-card--blue   .contact-card-icon { color: var(--accent-blue); }
+.contact-card--dark   .contact-card-icon { color: var(--text-primary); }
+.contact-card--sky    .contact-card-icon { color: var(--accent-sky); }
+.contact-card--yellow .contact-card-icon { color: var(--accent-yellow); }
+
+/* body text */
+.contact-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.contact-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-card-value {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* arrow */
+.contact-card-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact-card:hover .contact-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Email copy bar ───────────────────────── */
+.contact-page-email-bar {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 520px;
+}
+
+.email-bar-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.email-bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.email-bar-address {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.email-bar-copy {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent-orange);
+  color: var(--accent-orange);
+  background: none;
+  cursor: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.email-bar-copy:hover {
+  background: var(--accent-orange);
+  color: #fff;
+}
+
+.email-bar-copy.copied {
+  background: var(--accent-orange);
+  color: #fff;
+  border-color: var(--accent-orange);
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 900px) {
+  .contact-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card-value {
+    font-size: 0.85rem;
+  }
+
+  .email-bar-address {
+    font-size: 0.85rem;
+  }
+}
