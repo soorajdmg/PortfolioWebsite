@@ -1,11 +1,9 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
 import './Footer.css'
 
-const socials = [
-  { icon: <FaGithub />, href: 'https://github.com/soorajdmg', label: 'GitHub' },
-  { icon: <FaLinkedin />, href: 'https://linkedin.com/in/soorajmurugaraj', label: 'LinkedIn' },
-  { icon: <FaTwitter />, href: 'https://x.com/soorajdmg', label: 'Twitter / X' },
-  { icon: <FaEnvelope />, href: 'mailto:soorajmurugaraj@gmail.com', label: 'soorajmurugaraj@gmail.com' },
+const now = [
+  { label: 'building', value: 'Pennywise', note: 'AI finance companion' },
+  { label: 'reading', value: 'Gods, Guns and Missionaries' },
+  { label: 'status', value: 'Open to opportunities', highlight: true },
 ]
 
 export default function Footer() {
@@ -18,14 +16,16 @@ export default function Footer() {
         </div>
 
         <div className="footer-right">
-          <p className="footer-contact-heading">Get in touch</p>
-          <ul className="footer-socials">
-            {socials.map(({ icon, href, label }) => (
-              <li key={label}>
-                <a href={href} target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                  {icon}
-                  <span>{label}</span>
-                </a>
+          <p className="footer-now-heading">now</p>
+          <ul className="footer-now-list">
+            {now.map(({ label, value, note, highlight }) => (
+              <li key={label} className="footer-now-item">
+                <span className="footer-now-label">{label}</span>
+                <span className={`footer-now-value ${highlight ? 'footer-now-value--open' : ''}`}>
+                  {highlight && <span className="footer-now-dot" />}
+                  {value}
+                </span>
+                {note && <span className="footer-now-note">{note}</span>}
               </li>
             ))}
           </ul>
