@@ -22,10 +22,10 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
 }
 
-*, *::before, *::after {
+body.custom-cursor-active,
+body.custom-cursor-active *, body.custom-cursor-active *::before, body.custom-cursor-active *::after {
   cursor: none !important;
 }
 

@@ -114,7 +114,6 @@
   font-size: 0.9rem;
   font-weight: 600;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  cursor: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;

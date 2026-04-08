@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  cursor: none;
   transition: box-shadow var(--transition-med), border-color var(--transition-med);
 }
 

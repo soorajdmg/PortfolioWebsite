@@ -56,7 +56,6 @@
   color: var(--text-muted);
   font-size: 1.1rem;
   transition: color var(--transition-fast), transform var(--transition-fast);
-  cursor: none;
 }
 
 .card-links a:hover {

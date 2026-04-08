@@ -77,7 +77,6 @@
   color: var(--text-muted);
   font-size: 0.92rem;
   transition: color var(--transition-fast), transform var(--transition-fast);
-  cursor: none;
 }
 
 .social-link svg {
