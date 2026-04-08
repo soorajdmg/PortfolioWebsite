@@ -54,6 +54,8 @@ export default function Navbar({ logoVisible = false }) {
           <motion.span
             layoutId="site-logo"
             className="nav-logo"
+            onClick={() => { lenisRef.current?.scrollTo(0); setMenuOpen(false) }}
+            style={{ cursor: 'pointer' }}
           >
             Sooraj<span className="logo-dot">.</span>
           </motion.span>

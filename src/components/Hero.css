@@ -69,8 +69,7 @@
 
 .name-underline {
   display: block;
-  width: 100%;
-  max-width: 320px;
+  width: clamp(160px, 40vw, 320px);
   height: 18px;
   margin-top: 0.2rem;
   margin-bottom: 1.4rem;
