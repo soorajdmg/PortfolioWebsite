@@ -64,12 +64,23 @@ const cards = [
   },
 ]
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+}
+
 export default function ContactPage() {
   const [hovered, setHovered] = useState(null)
 
   return (
     <section id="contact" className="contact-page">
-      <div className="cp-fan">
+      <motion.div
+        className="cp-fan"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {cards.map((card, i) => (
           <motion.a
             key={card.label}
@@ -82,15 +93,15 @@ export default function ContactPage() {
               color: card.color,
               zIndex: hovered === i ? 10 : i,
             }}
-            initial={{ opacity: 0, y: card.y + 60, x: card.x ?? 0, rotate: card.rotate }}
-            whileInView={{ opacity: 1, y: card.y, x: card.x ?? 0, rotate: card.rotate }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-            animate={{
-              rotate: hovered === i ? 0 : card.rotate,
-              y: hovered === i ? card.y - 28 : card.y,
-              x: card.x ?? 0,
-              scale: hovered === i ? 1.05 : 1,
+            variants={{
+              hidden: { opacity: 0, y: 60, x: card.x ?? 0, rotate: card.rotate },
+              visible: { opacity: 1, y: card.y, x: card.x ?? 0, rotate: card.rotate, transition: { duration: 0.5, ease: 'easeOut' } },
+            }}
+            whileHover={{
+              rotate: 0,
+              y: card.y - 28,
+              scale: 1.05,
+              transition: { duration: 0.25, ease: 'easeOut' },
             }}
             onHoverStart={() => setHovered(i)}
             onHoverEnd={() => setHovered(null)}
@@ -103,7 +114,7 @@ export default function ContactPage() {
             <ArrowUpRight className="cp-card-arrow" />
           </motion.a>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
