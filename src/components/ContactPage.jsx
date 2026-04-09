@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import {
@@ -71,6 +71,15 @@ const containerVariants = {
 
 export default function ContactPage() {
   const [hovered, setHovered] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 560px)')
+    setIsMobile(mq.matches)
+    const handler = (e) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   return (
     <section id="contact" className="contact-page">
@@ -94,17 +103,17 @@ export default function ContactPage() {
               zIndex: hovered === i ? 10 : i,
             }}
             variants={{
-              hidden: { opacity: 0, y: 60, x: card.x ?? 0, rotate: card.rotate },
-              visible: { opacity: 1, y: card.y, x: card.x ?? 0, rotate: card.rotate, transition: { duration: 0.5, ease: 'easeOut' } },
+              hidden: { opacity: 0, y: 60, x: isMobile ? 0 : (card.x ?? 0), rotate: card.rotate },
+              visible: { opacity: 1, y: isMobile ? 0 : card.y, x: isMobile ? 0 : (card.x ?? 0), rotate: card.rotate, transition: { duration: 0.5, ease: 'easeOut' } },
             }}
-            whileHover={{
+            whileHover={isMobile ? {} : {
               rotate: 0,
               y: card.y - 28,
               scale: 1.05,
               transition: { duration: 0.25, ease: 'easeOut' },
             }}
-            onHoverStart={() => setHovered(i)}
-            onHoverEnd={() => setHovered(null)}
+            onHoverStart={() => !isMobile && setHovered(i)}
+            onHoverEnd={() => !isMobile && setHovered(null)}
           >
             <div className="cp-card-icon">{card.icon}</div>
             <div className="cp-card-body">

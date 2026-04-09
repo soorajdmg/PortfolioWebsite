@@ -98,18 +98,33 @@
 }
 
 @media (max-width: 560px) {
+  .contact-page {
+    min-height: 420px;
+    padding: 3rem 1rem 7rem;
+  }
+
   .cp-fan {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    margin-bottom: -80px;
   }
 
   .cp-card {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+    width: 200px;
+    height: 270px;
     margin-left: 0;
-    padding: 1.4rem;
-    transform: none !important;
+    margin-top: -60px;
+    justify-content: flex-start;
+    gap: 1.4rem;
+    padding-top: 1.6rem;
+  }
+
+  .cp-fan .cp-card:first-child {
+    margin-top: 0;
+  }
+
+  .cp-card-body {
+    position: absolute;
+    bottom: 4.5rem;
   }
 }
