@@ -15,6 +15,11 @@ export default function Hero() {
     if (el) lenisRef.current?.scrollTo(el, { offset: -80 })
   }
 
+  function scrollToContact() {
+    const el = document.getElementById('contact')
+    if (el) lenisRef.current?.scrollTo(el, { offset: -80 })
+  }
+
   return (
     <section className="hero" id="home">
       <FloatingShapes />
@@ -45,13 +50,13 @@ export default function Hero() {
               onMouseLeave={magnetPrimary.onMouseLeave}
               onClick={scrollToProjects}
             >View Projects</button>
-            <a
-              href="mailto:soorajmurugaraj@gmail.com"
+            <button
               className="btn btn-secondary"
               ref={magnetSecondary.ref}
               onMouseMove={magnetSecondary.onMouseMove}
               onMouseLeave={magnetSecondary.onMouseLeave}
-            >Say Hello</a>
+              onClick={scrollToContact}
+            >Say Hello</button>
           </div>
         </motion.div>
 
