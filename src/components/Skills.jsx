@@ -1,43 +1,57 @@
 import { motion } from 'framer-motion'
 import {
-  FaReact, FaJs, FaPython, FaNodeJs, FaGitAlt, FaCss3Alt, FaFigma, FaDocker, FaHtml5,
+  FaReact, FaJs, FaPython, FaNodeJs, FaGitAlt, FaCss3Alt, FaDocker, FaHtml5,
+  FaCode, FaLayerGroup, FaDatabase, FaWrench, FaBrain,
 } from 'react-icons/fa'
-import { SiTypescript, SiMongodb, SiTailwindcss, SiFlask } from 'react-icons/si'
+import { SiCplusplus, SiMysql, SiMongodb, SiGooglecloud, SiFlask } from 'react-icons/si'
 import './Skills.css'
 
 const groups = [
   {
-    label: 'Frontend',
+    label: 'Languages',
     color: '#0577dd',
+    headerIcon: <FaCode />,
     skills: [
-      { name: 'React',      icon: <FaReact /> },
       { name: 'JavaScript', icon: <FaJs /> },
-      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Python',     icon: <FaPython /> },
+      { name: 'C++',        icon: <SiCplusplus /> },
+      { name: 'SQL',        icon: <SiMysql /> },
       { name: 'HTML',       icon: <FaHtml5 /> },
       { name: 'CSS',        icon: <FaCss3Alt /> },
-      { name: 'Tailwind',   icon: <SiTailwindcss /> },
     ],
   },
   {
-    label: 'Backend',
+    label: 'Frameworks',
     color: '#f28b00',
+    headerIcon: <FaLayerGroup />,
     skills: [
-      { name: 'Node.js',  icon: <FaNodeJs /> },
-      { name: 'Python',   icon: <FaPython /> },
-      { name: 'Flask',    icon: <SiFlask /> },
-      { name: 'MongoDB',  icon: <SiMongodb /> },
+      { name: 'React',   icon: <FaReact /> },
+      { name: 'Node.js', icon: <FaNodeJs /> },
+      { name: 'Flask',   icon: <SiFlask /> },
+    ],
+  },
+  {
+    label: 'Databases',
+    color: '#40b4e5',
+    headerIcon: <FaDatabase />,
+    skills: [
+      { name: 'MongoDB', icon: <SiMongodb /> },
+      { name: 'MySQL',   icon: <SiMysql /> },
     ],
   },
   {
     label: 'Tools',
     color: '#fbc529',
+    headerIcon: <FaWrench />,
     skills: [
-      { name: 'Git',    icon: <FaGitAlt /> },
-      { name: 'Docker', icon: <FaDocker /> },
-      { name: 'Figma',  icon: <FaFigma /> },
+      { name: 'Git',          icon: <FaGitAlt /> },
+      { name: 'Docker',       icon: <FaDocker /> },
+      { name: 'Google Cloud', icon: <SiGooglecloud /> },
     ],
   },
 ]
+
+const coreSkills = ['Problem Solving', 'Attention to Detail', 'Decision Making', 'Team Collaboration']
 
 export default function Skills() {
   return (
@@ -56,37 +70,38 @@ export default function Skills() {
           <h2 className="skills-heading">My stack.</h2>
         </motion.div>
 
-        {/* RIGHT — icon tile bands */}
+        {/* RIGHT — tag cards */}
         <div className="skills-bands">
           {groups.map((group, gi) => (
             <motion.div
               key={group.label}
               className="skills-band"
               style={{ '--band-color': group.color }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: gi * 0.1 }}
+              transition={{ duration: 0.45, delay: gi * 0.1 }}
             >
-              {/* Watermark label */}
-              <span className="skills-band-watermark" aria-hidden="true">
-                {group.label}
+              {/* Card header */}
+              <div className="skills-band-header">
+                <span className="skills-band-label">{group.label}</span>
+              </div>
+              {/* Decorative icon — large, tilted, clipped at right edge */}
+              <span className="skills-band-deco-icon" aria-hidden="true">
+                {group.headerIcon}
               </span>
 
-              {/* Category label */}
-              <span className="skills-band-label">{group.label}</span>
-
-              {/* Tiles */}
+              {/* Chips */}
               <div className="skills-band-tiles">
                 {group.skills.map(({ name, icon }, si) => (
                   <motion.div
                     key={name}
                     className="skill-tile"
-                    initial={{ opacity: 0, scale: 0.88 }}
+                    initial={{ opacity: 0, scale: 0.85 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: gi * 0.1 + si * 0.06 }}
-                    whileHover={{ y: -6, transition: { duration: 0.18 } }}
+                    transition={{ duration: 0.28, delay: gi * 0.08 + si * 0.055 }}
+                    whileHover={{ y: -4, transition: { duration: 0.16 } }}
                   >
                     <span className="skill-tile-icon">{icon}</span>
                     <span className="skill-tile-name">{name}</span>
@@ -95,6 +110,38 @@ export default function Skills() {
               </div>
             </motion.div>
           ))}
+
+          {/* Core Skills card */}
+          <motion.div
+            className="skills-band skills-band--core"
+            style={{ '--band-color': 'var(--text-muted)' }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: groups.length * 0.1 }}
+          >
+            <div className="skills-band-header">
+              <span className="skills-band-label">Core Skills</span>
+            </div>
+            <span className="skills-band-deco-icon" aria-hidden="true">
+              <FaBrain />
+            </span>
+            <div className="skills-band-tiles">
+              {coreSkills.map((name, si) => (
+                <motion.div
+                  key={name}
+                  className="skill-tile skill-tile--core"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.28, delay: groups.length * 0.08 + si * 0.055 }}
+                  whileHover={{ y: -4, transition: { duration: 0.16 } }}
+                >
+                  <span className="skill-tile-name">{name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
       </div>
