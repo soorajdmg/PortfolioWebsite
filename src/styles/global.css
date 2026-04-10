@@ -80,17 +80,11 @@ section {
   line-height: 1;
 }
 
-/* Large screen scaling */
-@media (min-width: 1400px) {
-  :root {
-    --section-padding: 120px 0;
-    --container-padding: 0 3rem;
-  }
-}
-
+/* Large screen scaling — ultrawide only */
 @media (min-width: 1800px) {
   :root {
     --section-padding: 140px 0;
+    --container-padding: 0 3rem;
   }
 }
 

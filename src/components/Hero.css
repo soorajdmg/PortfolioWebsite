@@ -179,21 +179,7 @@
   margin-bottom: -60px;
 }
 
-/* Large screens */
-@media (min-width: 1400px) {
-  .hero-container {
-    gap: 6rem;
-  }
-
-  .hero-text {
-    max-width: 680px;
-  }
-
-  .illustration-img {
-    max-width: 620px;
-  }
-}
-
+/* Large screens — ultrawide only */
 @media (min-width: 1800px) {
   .hero-container {
     gap: 8rem;

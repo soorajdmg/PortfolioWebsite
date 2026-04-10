@@ -107,7 +107,7 @@
   font-weight: 500;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1800px) {
   .about-container {
     gap: 8rem;
     grid-template-columns: 1fr 1.6fr;
