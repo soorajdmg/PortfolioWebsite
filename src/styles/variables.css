@@ -21,7 +21,7 @@
 
   /* Spacing */
   --section-padding: 100px 0;
-  --container-max: 1200px;
+  --container-max: clamp(1200px, 88vw, 1600px);
   --container-padding: 0 2rem;
 
   /* Shadows */

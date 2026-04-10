@@ -88,6 +88,37 @@
   color: var(--text-primary);
 }
 
+@media (min-width: 1800px) {
+  .skills-container {
+    grid-template-columns: 260px 1fr;
+    gap: 8rem;
+  }
+
+  .skills-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 4rem;
+    align-items: start;
+  }
+
+  .skills-group {
+    gap: 1.2rem;
+  }
+
+  .skill-pill {
+    padding: 0.65rem 1.3rem;
+    gap: 0.6rem;
+  }
+
+  .skill-pill-icon {
+    font-size: 1.15rem;
+  }
+
+  .skill-pill-name {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 780px) {
   .skills-container {
     grid-template-columns: 1fr;

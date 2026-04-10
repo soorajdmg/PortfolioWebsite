@@ -80,6 +80,20 @@ section {
   line-height: 1;
 }
 
+/* Large screen scaling */
+@media (min-width: 1400px) {
+  :root {
+    --section-padding: 120px 0;
+    --container-padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --section-padding: 140px 0;
+  }
+}
+
 /* Grain texture overlay */
 body::after {
   content: '';

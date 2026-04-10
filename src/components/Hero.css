@@ -179,6 +179,35 @@
   margin-bottom: -60px;
 }
 
+/* Large screens */
+@media (min-width: 1400px) {
+  .hero-container {
+    gap: 6rem;
+  }
+
+  .hero-text {
+    max-width: 680px;
+  }
+
+  .illustration-img {
+    max-width: 620px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero-container {
+    gap: 8rem;
+  }
+
+  .hero-text {
+    max-width: 780px;
+  }
+
+  .illustration-img {
+    max-width: 720px;
+  }
+}
+
 /* Tablet */
 @media (max-width: 900px) {
   .hero {

@@ -107,6 +107,13 @@
   font-weight: 500;
 }
 
+@media (min-width: 1400px) {
+  .about-container {
+    gap: 8rem;
+    grid-template-columns: 1fr 1.6fr;
+  }
+}
+
 @media (max-width: 860px) {
   .about-container {
     grid-template-columns: 1fr;
