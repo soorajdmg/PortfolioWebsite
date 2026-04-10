@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import {
   FaReact, FaJs, FaPython, FaNodeJs, FaGitAlt, FaCss3Alt, FaDocker, FaHtml5,
-  FaCode, FaLayerGroup, FaDatabase, FaWrench, FaBrain,
+  FaCode, FaLayerGroup, FaDatabase, FaWrench,
 } from 'react-icons/fa'
 import { SiCplusplus, SiMysql, SiMongodb, SiGooglecloud, SiFlask } from 'react-icons/si'
 import './Skills.css'
@@ -86,11 +86,6 @@ export default function Skills() {
               <div className="skills-band-header">
                 <span className="skills-band-label">{group.label}</span>
               </div>
-              {/* Decorative icon — large, tilted, clipped at right edge */}
-              <span className="skills-band-deco-icon" aria-hidden="true">
-                {group.headerIcon}
-              </span>
-
               {/* Chips */}
               <div className="skills-band-tiles">
                 {group.skills.map(({ name, icon }, si) => (
@@ -123,9 +118,6 @@ export default function Skills() {
             <div className="skills-band-header">
               <span className="skills-band-label">Core Skills</span>
             </div>
-            <span className="skills-band-deco-icon" aria-hidden="true">
-              <FaBrain />
-            </span>
             <div className="skills-band-tiles">
               {coreSkills.map((name, si) => (
                 <motion.div
