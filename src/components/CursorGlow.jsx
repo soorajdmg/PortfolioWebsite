@@ -9,7 +9,7 @@ export default function CursorGlow() {
   useEffect(() => {
     document.body.classList.add('custom-cursor-active')
 
-    const interactive = '.nav-links a, .btn, .hamburger, .pose-circle, input, textarea, select, label, .bento-credential-link'
+    const interactive = '.nav-links a, .btn, .hamburger, .colour-circle, input, textarea, select, label, .bento-credential-link'
 
     const onMove = (e) => {
       const { clientX: x, clientY: y } = e

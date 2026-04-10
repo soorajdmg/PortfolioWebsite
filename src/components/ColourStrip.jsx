@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import './PoseStrip.css'
+import './ColourStrip.css'
 
 // Colour circles using the site's accent palette — no images needed
 // Pattern cycles through blue / orange / yellow with size variation for rhythm
@@ -21,11 +21,11 @@ const CIRCLES = [
 // Triple the pattern for full-width coverage at any screen size
 const row = [...CIRCLES, ...CIRCLES, ...CIRCLES]
 
-export default function PoseStrip() {
+export default function ColourStrip() {
   const rowRef = useRef(null)
 
   useEffect(() => {
-    const section = rowRef.current?.closest('.pose-strip')
+    const section = rowRef.current?.closest('.colour-strip')
     if (!section) return
 
     let rafId
@@ -58,12 +58,12 @@ export default function PoseStrip() {
   }, [])
 
   return (
-    <div className="pose-strip" aria-hidden="true">
-      <div className="pose-row" ref={rowRef}>
+    <div className="colour-strip" aria-hidden="true">
+      <div className="colour-row" ref={rowRef}>
         {row.map((circle, i) => (
           <div
             key={i}
-            className={`pose-circle pose-circle--${circle.size}`}
+            className={`colour-circle colour-circle--${circle.size}`}
             style={{ background: circle.color }}
           />
         ))}

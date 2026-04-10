@@ -1,10 +1,10 @@
-.pose-strip {
+.colour-strip {
   background: var(--bg-primary);
   padding: 2.5rem 0;
   overflow: hidden;
 }
 
-.pose-row {
+.colour-row {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -13,7 +13,7 @@
 }
 
 /* Base circle */
-.pose-circle {
+.colour-circle {
   border-radius: 50%;
   flex-shrink: 0;
   opacity: 0.85;
@@ -21,39 +21,39 @@
 }
 
 /* Size variants */
-.pose-circle--lg {
+.colour-circle--lg {
   width: 82px;
   height: 82px;
 }
 
-.pose-circle--md {
+.colour-circle--md {
   width: 60px;
   height: 60px;
 }
 
-.pose-circle--sm {
+.colour-circle--sm {
   width: 40px;
   height: 40px;
 }
 
-.pose-circle:hover {
+.colour-circle:hover {
   opacity: 1;
   transform: scale(1.1);
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .pose-circle--lg {
+  .colour-circle--lg {
     width: 54px;
     height: 54px;
   }
 
-  .pose-circle--md {
+  .colour-circle--md {
     width: 40px;
     height: 40px;
   }
 
-  .pose-circle--sm {
+  .colour-circle--sm {
     width: 28px;
     height: 28px;
   }

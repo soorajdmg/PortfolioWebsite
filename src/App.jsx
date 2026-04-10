@@ -3,7 +3,7 @@ import CursorGlow from './components/CursorGlow'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
-import PoseStrip from './components/PoseStrip'
+import ColourStrip from './components/ColourStrip'
 import Skills from './components/Skills'
 import Certificates from './components/Certificates'
 import ContactPage from './components/ContactPage'
@@ -30,7 +30,7 @@ function App() {
           <SectionDivider fromColor="#fef3e2" toColor="var(--bg-secondary)" />
           <About />
           <SectionDivider fromColor="var(--bg-secondary)" toColor="var(--bg-primary)" layered />
-          <PoseStrip />
+          <ColourStrip />
           <Projects />
           <SectionDivider />
           <Skills />
