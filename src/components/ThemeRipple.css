@@ -1,0 +1,29 @@
+.theme-ripple {
+  position: fixed;
+  inset: 0;
+  z-index: 9998; /* below grain (9999) but above everything else */
+  pointer-events: none;
+
+  clip-path: circle(0% at var(--ripple-x) var(--ripple-y));
+  background: var(--ripple-color);
+
+  animation: theme-ripple-expand 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes theme-ripple-expand {
+  /* Snap to full coverage quickly */
+  0%   {
+    clip-path: circle(0%   at var(--ripple-x) var(--ripple-y));
+    opacity: 1;
+  }
+  /* Peak — fully covers the screen; theme commits here (~340ms) */
+  52%  {
+    clip-path: circle(150% at var(--ripple-x) var(--ripple-y));
+    opacity: 1;
+  }
+  /* Fade out to reveal the newly themed site */
+  100% {
+    clip-path: circle(150% at var(--ripple-x) var(--ripple-y));
+    opacity: 0;
+  }
+}

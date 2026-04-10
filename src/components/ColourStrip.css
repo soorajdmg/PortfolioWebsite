@@ -12,12 +12,18 @@
   will-change: transform;
 }
 
-/* Base circle */
+/* Base circle — now a button */
 .colour-circle {
   border-radius: 50%;
   flex-shrink: 0;
-  opacity: 0.85;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  opacity: 0.82;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  outline: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Size variants */
@@ -38,7 +44,18 @@
 
 .colour-circle:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.18) translateY(-4px);
+}
+
+.colour-circle:active {
+  transform: scale(0.92) translateY(0);
+  transition-duration: 0.08s;
+}
+
+/* Focus ring for keyboard navigation */
+.colour-circle:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 4px;
 }
 
 /* Mobile */
