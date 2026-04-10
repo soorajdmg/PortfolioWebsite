@@ -22,18 +22,18 @@
 
 /* Size variants */
 .pose-circle--lg {
-  width: 110px;
-  height: 110px;
+  width: 82px;
+  height: 82px;
 }
 
 .pose-circle--md {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .pose-circle--sm {
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
 }
 
 .pose-circle:hover {
@@ -44,17 +44,17 @@
 /* Mobile */
 @media (max-width: 600px) {
   .pose-circle--lg {
-    width: 72px;
-    height: 72px;
+    width: 54px;
+    height: 54px;
   }
 
   .pose-circle--md {
-    width: 52px;
-    height: 52px;
+    width: 40px;
+    height: 40px;
   }
 
   .pose-circle--sm {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
   }
 }
