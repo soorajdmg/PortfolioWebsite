@@ -1,16 +1,27 @@
 import { useEffect, useRef } from 'react'
-import cheerPose from '../assets/images/poses/cheer-pose.png'
-import lovePose from '../assets/images/poses/love-pose.png'
-import phonePose from '../assets/images/poses/phone-pose.png'
-import proPose from '../assets/images/poses/pro-pose.png'
-import shyPose from '../assets/images/poses/shy-pose.png'
-import thinkPose from '../assets/images/poses/think-pose.png'
-import wavePose from '../assets/images/poses/wave-pose.png'
-// import winkPose from '../assets/images/poses/wink-pose.png'
 import './PoseStrip.css'
-const poses = [cheerPose, lovePose, phonePose, proPose, shyPose, thinkPose, wavePose]
-// Duplicate twice to ensure full-width coverage at any screen size
-const row = [...poses, ...poses, ...poses]
+
+// Colour circles using the site's accent palette — no images needed
+// Pattern cycles through blue / orange / yellow with size variation for rhythm
+// Size pattern: md-sm-lg-sm-md-sm-lg-sm-md-sm-lg
+// Seam when tripled: lg→md ✓ — no two same sizes ever adjacent
+// Colors rotate through all 4 accents, no two adjacent same color
+const CIRCLES = [
+  { color: 'var(--accent-blue)',   size: 'md' },
+  { color: 'var(--accent-orange)', size: 'sm' },
+  { color: 'var(--accent-sky)',    size: 'lg' },
+  { color: 'var(--accent-yellow)', size: 'sm' },
+  { color: 'var(--accent-orange)', size: 'md' },
+  { color: 'var(--accent-blue)',   size: 'sm' },
+  { color: 'var(--accent-sky)',    size: 'lg' },
+  { color: 'var(--accent-yellow)', size: 'sm' },
+  { color: 'var(--accent-orange)', size: 'md' },
+  { color: 'var(--accent-blue)',   size: 'sm' },
+  { color: 'var(--accent-yellow)', size: 'lg' },
+]
+
+// Triple the pattern for full-width coverage at any screen size
+const row = [...CIRCLES, ...CIRCLES, ...CIRCLES]
 
 export default function PoseStrip() {
   const rowRef = useRef(null)
@@ -49,12 +60,14 @@ export default function PoseStrip() {
   }, [])
 
   return (
-    <div className="pose-strip">
+    <div className="pose-strip" aria-hidden="true">
       <div className="pose-row" ref={rowRef}>
-        {row.map((src, i) => (
-          <div className="pose-circle" key={i}>
-            <img src={src} alt="pose" />
-          </div>
+        {row.map((circle, i) => (
+          <div
+            key={i}
+            className={`pose-circle pose-circle--${circle.size}`}
+            style={{ background: circle.color }}
+          />
         ))}
       </div>
     </div>

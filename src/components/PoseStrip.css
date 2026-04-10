@@ -6,37 +6,55 @@
 
 .pose-row {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
   width: max-content;
   will-change: transform;
 }
 
+/* Base circle */
 .pose-circle {
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Size variants */
+.pose-circle--lg {
   width: 110px;
   height: 110px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 3px solid var(--card-border);
-  background: var(--bg-secondary);
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.pose-circle--md {
+  width: 80px;
+  height: 80px;
+}
+
+.pose-circle--sm {
+  width: 54px;
+  height: 54px;
 }
 
 .pose-circle:hover {
-  border-color: var(--accent-orange);
-  transform: scale(1.08);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-.pose-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
+/* Mobile */
 @media (max-width: 600px) {
-  .pose-circle {
-    width: 80px;
-    height: 80px;
+  .pose-circle--lg {
+    width: 72px;
+    height: 72px;
+  }
+
+  .pose-circle--md {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pose-circle--sm {
+    width: 36px;
+    height: 36px;
   }
 }
