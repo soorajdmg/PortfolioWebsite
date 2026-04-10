@@ -37,9 +37,13 @@
 
 /* RIGHT — card grid */
 .skills-bands {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  columns: 3;
+  column-gap: 1.2rem;
+}
+
+.skills-bands > * {
+  break-inside: avoid;
+  margin-bottom: 1.2rem;
 }
 
 /* ── Tag Card ── */

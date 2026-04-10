@@ -21,6 +21,16 @@ const groups = [
     ],
   },
   {
+    label: 'Tools',
+    color: '#fbc529',
+    headerIcon: <FaWrench />,
+    skills: [
+      { name: 'Git',          icon: <FaGitAlt /> },
+      { name: 'Docker',       icon: <FaDocker /> },
+      { name: 'Google Cloud', icon: <SiGooglecloud /> },
+    ],
+  },
+  {
     label: 'Frameworks',
     color: '#f28b00',
     headerIcon: <FaLayerGroup />,
@@ -37,16 +47,6 @@ const groups = [
     skills: [
       { name: 'MongoDB', icon: <SiMongodb /> },
       { name: 'MySQL',   icon: <SiMysql /> },
-    ],
-  },
-  {
-    label: 'Tools',
-    color: '#fbc529',
-    headerIcon: <FaWrench />,
-    skills: [
-      { name: 'Git',          icon: <FaGitAlt /> },
-      { name: 'Docker',       icon: <FaDocker /> },
-      { name: 'Google Cloud', icon: <SiGooglecloud /> },
     ],
   },
 ]
