@@ -3,21 +3,19 @@ import './PoseStrip.css'
 
 // Colour circles using the site's accent palette — no images needed
 // Pattern cycles through blue / orange / yellow with size variation for rhythm
-// Size pattern: md-sm-lg-sm-md-sm-lg-sm-md-sm-lg
-// Seam when tripled: lg→md ✓ — no two same sizes ever adjacent
-// Colors rotate through all 4 accents, no two adjacent same color
+// Size pattern: sm-md-sm-lg-sm-md-sm-lg-sm-md (10 items, seam md→sm ✓)
+// Colors: hardcoded random order, no two adjacent same, seam sky→sm-blue ✓
 const CIRCLES = [
-  { color: 'var(--accent-blue)',   size: 'md' },
+  { color: 'var(--accent-blue)',   size: 'sm' },
+  { color: 'var(--accent-yellow)', size: 'md' },
   { color: 'var(--accent-orange)', size: 'sm' },
   { color: 'var(--accent-sky)',    size: 'lg' },
   { color: 'var(--accent-yellow)', size: 'sm' },
   { color: 'var(--accent-orange)', size: 'md' },
   { color: 'var(--accent-blue)',   size: 'sm' },
-  { color: 'var(--accent-sky)',    size: 'lg' },
-  { color: 'var(--accent-yellow)', size: 'sm' },
-  { color: 'var(--accent-orange)', size: 'md' },
-  { color: 'var(--accent-blue)',   size: 'sm' },
   { color: 'var(--accent-yellow)', size: 'lg' },
+  { color: 'var(--accent-sky)',    size: 'sm' },
+  { color: 'var(--accent-orange)', size: 'md' },
 ]
 
 // Triple the pattern for full-width coverage at any screen size
