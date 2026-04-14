@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import './About.css'
 
-const chips = ['React', 'Python', 'Machine Learning', 'UI/UX', 'Node.js', 'Figma']
+const chips = ['React', 'Python', 'Machine Learning', 'UI/UX', 'Node.js']
 
 const stats = [
   { target: 20, suffix: '+', label: 'Projects built' },
