@@ -58,10 +58,17 @@
   border-radius: var(--radius-pill);
 }
 
-.bento-tag--skill,
 .bento-tag--skills {
   color: #40b4e5;
   background: rgba(64, 180, 229, 0.12);
+}
+
+.bento-tag--keyword {
+  color: var(--text-muted);
+  background: var(--card-border, rgba(0,0,0,0.06));
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: none;
 }
 
 .bento-tag--internship {
@@ -120,7 +127,6 @@
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.bento-card:has(.bento-tag--skill) .bento-credential-link,
 .bento-card:has(.bento-tag--skills) .bento-credential-link {
   color: #40b4e5;
 }
@@ -129,7 +135,6 @@
   color: #f28b00;
 }
 
-.bento-card:has(.bento-tag--skill) .bento-credential-link:hover,
 .bento-card:has(.bento-tag--skills) .bento-credential-link:hover {
   background: #40b4e5;
   color: #fff;

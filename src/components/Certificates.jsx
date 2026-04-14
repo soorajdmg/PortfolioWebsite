@@ -16,7 +16,8 @@ const certificates = [
     title: 'AI Research & Development Intern',
     issuer: 'CSIR - NIIST',
     date: '2025',
-    category: 'internship',
+    type: 'internship',
+    tags: ['Python', 'AI','Stock Market Analysis'],
     size: 'wide',
     image: cert1,
   },
@@ -25,7 +26,8 @@ const certificates = [
     title: 'Student Intern',
     issuer: 'IBM',
     date: '2024',
-    category: 'internship',
+    type: 'internship',
+    tags: ['Cloud', 'AI', 'Enterprise Tech'],
     size: 'tall',
     image: cert5,
   },
@@ -34,7 +36,8 @@ const certificates = [
     title: 'Data Science & AI Intern',
     issuer: 'KELTRON Advanced Studies',
     date: '2024',
-    category: 'internship',
+    type: 'internship',
+    tags: ['Python', 'Data Science', 'Machine Learning'],
     size: 'small',
     image: cert4,
   },
@@ -43,7 +46,8 @@ const certificates = [
     title: 'Data Visualization',
     issuer: 'TATA',
     date: '2025',
-    category: 'skills',
+    type: 'skills',
+    tags: ['Data Viz', 'Tableau', 'Analytics'],
     size: 'small',
     image: cert2,
   },
@@ -52,7 +56,8 @@ const certificates = [
     title: 'Artificial Intelligence Fundamentals',
     issuer: 'IBM',
     date: 'June 2024',
-    category: 'skills',
+    type: 'skills',
+    tags: ['AI', 'Machine Learning', 'Neural Networks'],
     size: 'wide',
     image: cert6,
   },
@@ -61,7 +66,8 @@ const certificates = [
     title: 'Advanced Computer Networks',
     issuer: 'NPTEL',
     date: 'January 2025',
-    category: 'skills',
+    type: 'skills',
+    tags: ['Networking', 'TCP/IP', 'Security'],
     size: 'small',
     image: cert3,
   },
@@ -70,7 +76,8 @@ const certificates = [
   //   title: 'Project Management Fundamentals',
   //   issuer: 'IBM',
   //   date: 'July 2024',
-  //   category: 'skills',
+  //   type: 'skills',
+  //   tags: ['Project Management', 'Agile', 'Planning'],
   //   size: 'small',
   //   image: cert7,
   // },
@@ -112,9 +119,12 @@ export default function Certificates() {
               >
                 <div className="bento-content">
                   <div className="bento-tags">
-                    <span className={`bento-tag bento-tag--${cert.category}`}>
-                      {cert.category === 'skills' ? 'Skill' : 'Internship'}
+                    <span className={`bento-tag bento-tag--${cert.type}`}>
+                      {cert.type === 'internship' ? 'Internship' : 'Skill'}
                     </span>
+                    {cert.tags.map(tag => (
+                      <span key={tag} className="bento-tag bento-tag--keyword">{tag}</span>
+                    ))}
                   </div>
                   <h3 className="bento-title">{cert.title}</h3>
                   <p className="bento-issuer">{cert.issuer}</p>
