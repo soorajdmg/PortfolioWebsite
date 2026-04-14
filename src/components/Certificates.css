@@ -12,9 +12,10 @@
 }
 
 /* Size variants */
-.bento-wide  { grid-column: span 2; }
-.bento-tall  { grid-row: span 2; }
+.bento-wide   { grid-column: span 2; }
+.bento-tall   { grid-row: span 2; }
 .bento-normal { grid-column: span 1; }
+.bento-small  { grid-column: span 1; }
 
 /* Card base */
 .bento-card {
@@ -57,7 +58,8 @@
   border-radius: var(--radius-pill);
 }
 
-.bento-tag--skill {
+.bento-tag--skill,
+.bento-tag--skills {
   color: #40b4e5;
   background: rgba(64, 180, 229, 0.12);
 }
@@ -118,7 +120,8 @@
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.bento-card:has(.bento-tag--skill) .bento-credential-link {
+.bento-card:has(.bento-tag--skill) .bento-credential-link,
+.bento-card:has(.bento-tag--skills) .bento-credential-link {
   color: #40b4e5;
 }
 
@@ -126,7 +129,8 @@
   color: #f28b00;
 }
 
-.bento-card:has(.bento-tag--skill) .bento-credential-link:hover {
+.bento-card:has(.bento-tag--skill) .bento-credential-link:hover,
+.bento-card:has(.bento-tag--skills) .bento-credential-link:hover {
   background: #40b4e5;
   color: #fff;
 }
@@ -134,6 +138,33 @@
 .bento-card:has(.bento-tag--internship) .bento-credential-link:hover {
   background: #f28b00;
   color: #fff;
+}
+
+.certs-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.certs-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.certs-toggle-btn:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
 }
 
 @media (max-width: 780px) {
@@ -154,5 +185,6 @@
 
   .bento-wide,
   .bento-tall,
-  .bento-normal { grid-column: span 1; grid-row: span 1; }
+  .bento-normal,
+  .bento-small { grid-column: span 1; grid-row: span 1; }
 }
