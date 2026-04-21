@@ -40,7 +40,7 @@
 
   /* Left: image */
   .projects-mobile-image {
-    flex: 0 0 38%;
+    flex: 0 0 45%;
     position: sticky;
     top: 5rem;
   }
