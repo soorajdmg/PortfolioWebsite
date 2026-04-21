@@ -10,6 +10,8 @@ import {
 } from 'react-icons/fa'
 import peekingMe1 from '../assets/images/peeking-me1.png'
 import peekingMe2 from '../assets/images/peeking-me2.png'
+import mobilePeekingMe1 from '../assets/images/mobilepeeking-me1.png'
+import mobilePeekingMe2 from '../assets/images/mobilepeeking-me2.png'
 import './ContactPage.css'
 
 const cards = [
@@ -87,7 +89,9 @@ export default function ContactPage() {
     <section id="contact" className="contact-page">
       <div className="cp-peeking-wrapper">
         <img
-          src={hovered !== null ? peekingMe2 : peekingMe1}
+          src={isMobile
+            ? (hovered !== null ? mobilePeekingMe2 : mobilePeekingMe1)
+            : (hovered !== null ? peekingMe2 : peekingMe1)}
           alt="peeking"
           className="cp-peeking-img"
           style={{ zIndex: hovered === 0 ? 0 : 20 }}
