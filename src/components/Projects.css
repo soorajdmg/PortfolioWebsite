@@ -40,16 +40,33 @@
 
   /* Left: image */
   .projects-mobile-image {
-    flex: 0 0 45%;
+    flex: 0 0 calc(45% + 2rem);
+    margin-left: -2rem;
     position: sticky;
     top: 5rem;
   }
 
-  .projects-mobile-image img {
+  .projects-mobile-image-wrap {
+    position: relative;
+  }
+
+  .projects-mobile-image-wrap img {
     width: 100%;
     border-radius: var(--radius-lg);
     object-fit: cover;
     display: block;
+  }
+
+  .projects-mobile-image-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: linear-gradient(to bottom, transparent, var(--bg-primary));
+    pointer-events: none;
   }
 
   /* Right: accordion tiles */

@@ -135,7 +135,9 @@ export default function Projects() {
         {/* Mobile two-column layout */}
         <div className="projects-mobile">
           <div className="projects-mobile-image">
-            <img src={projectMe} alt="Sooraj" />
+            <div className="projects-mobile-image-wrap">
+              <img src={projectMe} alt="Sooraj" />
+            </div>
           </div>
           <div className="projects-mobile-tiles">
             {projects.map((project, i) => (
