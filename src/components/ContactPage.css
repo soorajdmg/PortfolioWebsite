@@ -147,7 +147,7 @@
     position: relative;
     bottom: auto;
     left: auto;
-    transform: rotate(6deg);
+    transform: rotate(6deg) translate(10px, -12px);
     transform-origin: bottom center;
     display: block;
     margin-bottom: -30px;
