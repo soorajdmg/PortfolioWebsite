@@ -90,7 +90,7 @@ export default function ContactPage() {
       <div className="cp-peeking-wrapper">
         <img
           src={isMobile
-            ? (hovered !== null ? mobilePeekingMe2 : mobilePeekingMe1)
+            ? mobilePeekingMe2
             : (hovered !== null ? peekingMe2 : peekingMe1)}
           alt="peeking"
           className="cp-peeking-img"
