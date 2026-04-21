@@ -8,6 +8,29 @@
   overflow: hidden;
 }
 
+/* ── Peeking wrapper ─────────────────────── */
+.cp-peeking-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cp-peeking-img {
+  height: 320px;
+  width: auto;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: rotate(6deg) translate(-144px, -50px);
+  transform-origin: bottom right;
+  z-index: 20;
+}
+
 /* ── Fan — horizontal spread ─────────────── */
 .cp-fan {
   display: flex;
@@ -101,6 +124,10 @@
   .contact-page {
     min-height: 420px;
     padding: 3rem 1rem 7rem;
+  }
+
+  .cp-peeking-img {
+    display: none;
   }
 
   .cp-fan {
