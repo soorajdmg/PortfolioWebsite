@@ -108,6 +108,13 @@
 }
 
 /* ── Responsive ──────────────────────────── */
+@media (max-width: 1100px) {
+  .cp-peeking-img {
+    height: 260px;
+    transform: rotate(6deg) translate(-118px, -70px);
+  }
+}
+
 @media (max-width: 860px) {
   .cp-card {
     width: 180px;
@@ -117,6 +124,11 @@
 
   .cp-card-label {
     font-size: 1.15rem;
+  }
+
+  .cp-peeking-img {
+    height: 170px;
+    transform: rotate(6deg) translate(-78px, -100px);
   }
 }
 
