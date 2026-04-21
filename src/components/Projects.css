@@ -3,6 +3,7 @@
   background: var(--bg-primary);
 }
 
+/* ── Desktop / tablet grid ── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -21,8 +22,124 @@
   }
 }
 
+/* ── Mobile layout: hide grid, show split ── */
+.projects-mobile {
+  display: none;
+}
+
 @media (max-width: 560px) {
   .projects-grid {
-    grid-template-columns: 1fr;
+    display: none;
   }
+
+  .projects-mobile {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  /* Left: image */
+  .projects-mobile-image {
+    flex: 0 0 38%;
+    position: sticky;
+    top: 5rem;
+  }
+
+  .projects-mobile-image img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Right: accordion tiles */
+  .projects-mobile-tiles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
+/* ── Mobile accordion tile ── */
+.mobile-tile {
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.mobile-tile-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.mobile-tile-header.open {
+  border-bottom: 1px solid var(--card-border);
+}
+
+.mobile-tile-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.mobile-tile-chevron {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.mobile-tile-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.mobile-tile-body {
+  overflow: hidden;
+}
+
+.mobile-tile-inner {
+  padding: 0.85rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-tile-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.mobile-tile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.mobile-tile-links {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.mobile-tile-links a {
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.mobile-tile-links a:hover {
+  color: var(--accent-blue);
+  transform: translateY(-2px);
 }

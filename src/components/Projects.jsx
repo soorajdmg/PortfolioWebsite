@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaGithub, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa'
 import ProjectCard from './ProjectCard'
+import projectMe from '../assets/images/project-me.png'
 import './Projects.css'
 
 const projects = [
@@ -42,7 +45,65 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
+function MobileProjectTile({ project, index, isOpen, onToggle }) {
+  return (
+    <motion.div
+      className="mobile-tile"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+    >
+      <button
+        className={`mobile-tile-header ${isOpen ? 'open' : ''}`}
+        onClick={onToggle}
+        aria-expanded={isOpen}
+      >
+        <span className="mobile-tile-title">{project.title}</span>
+        <FaChevronDown className={`mobile-tile-chevron ${isOpen ? 'rotated' : ''}`} />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            className="mobile-tile-body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <div className="mobile-tile-inner">
+              <p className="mobile-tile-desc">{project.description}</p>
+              <div className="mobile-tile-tags">
+                {project.tags.map(tag => (
+                  <span className="tag" key={tag}>{tag}</span>
+                ))}
+              </div>
+              <div className="mobile-tile-links">
+                {project.githubUrl && (
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub`}>
+                    <FaGithub />
+                  </a>
+                )}
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live demo`}>
+                    <FaExternalLinkAlt />
+                  </a>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
 export default function Projects() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const handleToggle = (i) => setOpenIndex(prev => prev === i ? null : i)
+
   return (
     <section id="projects" className="projects">
       <div className="container">
@@ -56,6 +117,7 @@ export default function Projects() {
           <h2 className="section-title">Projects.</h2>
         </motion.div>
 
+        {/* Desktop / tablet grid */}
         <motion.div
           className="projects-grid"
           variants={containerVariants}
@@ -69,6 +131,24 @@ export default function Projects() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile two-column layout */}
+        <div className="projects-mobile">
+          <div className="projects-mobile-image">
+            <img src={projectMe} alt="Sooraj" />
+          </div>
+          <div className="projects-mobile-tiles">
+            {projects.map((project, i) => (
+              <MobileProjectTile
+                key={project.title}
+                project={project}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => handleToggle(i)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
