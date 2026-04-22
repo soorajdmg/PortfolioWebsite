@@ -188,34 +188,15 @@
   background: var(--accent-orange);
 }
 
-/* Active — Pac-Man facing right */
+/* Active — orange circle */
 .fslide-dot--active {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background: var(--accent-orange);
   opacity: 1;
   cursor: default;
   flex-shrink: 0;
-  animation: pacman-chomp 0.45s ease-in-out infinite alternate;
-}
-
-@keyframes pacman-chomp {
-  from {
-    /* mouth wide open, gap centered at 90deg (right) */
-    background: conic-gradient(
-      from 105deg,
-      var(--accent-orange) 0deg 300deg,
-      transparent 300deg 360deg
-    );
-  }
-  to {
-    /* mouth nearly closed */
-    background: conic-gradient(
-      from 95deg,
-      var(--accent-orange) 0deg 350deg,
-      transparent 350deg 360deg
-    );
-  }
 }
 
 /* ── Bottom bar ── */
