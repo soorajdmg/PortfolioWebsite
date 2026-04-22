@@ -25,7 +25,7 @@ const projects = [
     description: 'Expands on the classic puzzle game with enhanced gameplay mechanics, user accounts, customizable themes, global leaderboards, smooth animations, and persistent progress.',
     tags: ['React.js', 'Node.js', 'MongoDB'],
     githubUrl: 'https://github.com/soorajdmg/beyond2048',
-    liveUrl: 'https://beyond2048-frontend.onrender.com/',
+    liveUrl: 'https://beyond2048.vercel.app/',
   },
   {
     title: 'NuGame',
