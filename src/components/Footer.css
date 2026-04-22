@@ -115,7 +115,110 @@
   color: var(--text-muted);
 }
 
-/* Bottom bar */
+/* ── Photo Slideshow ── */
+.fslide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.fslide-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.fslide-header-dot {
+  color: var(--accent-orange);
+  letter-spacing: 0;
+}
+
+.fslide-frame {
+  position: relative;
+  width: 160px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid var(--card-border);
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+.fslide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.fslide-img--active {
+  opacity: 1;
+}
+
+/* Dots */
+.fslide-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Inactive — small muted dots */
+.fslide-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.fslide-dot:hover {
+  opacity: 0.8;
+  background: var(--accent-orange);
+}
+
+/* Active — Pac-Man facing right */
+.fslide-dot--active {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 1;
+  cursor: default;
+  flex-shrink: 0;
+  animation: pacman-chomp 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes pacman-chomp {
+  from {
+    /* mouth wide open, gap centered at 90deg (right) */
+    background: conic-gradient(
+      from 105deg,
+      var(--accent-orange) 0deg 300deg,
+      transparent 300deg 360deg
+    );
+  }
+  to {
+    /* mouth nearly closed */
+    background: conic-gradient(
+      from 95deg,
+      var(--accent-orange) 0deg 350deg,
+      transparent 350deg 360deg
+    );
+  }
+}
+
+/* ── Bottom bar ── */
 .footer-bottom {
   border-top: 1px solid var(--card-border);
   padding: 1rem 0;
@@ -131,6 +234,7 @@
 @media (max-width: 600px) {
   .footer-inner {
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -143,5 +247,10 @@
   .footer-right {
     width: 100%;
     align-items: flex-start;
+  }
+
+  .fslide-frame {
+    width: 140px;
+    height: 105px;
   }
 }
