@@ -140,8 +140,8 @@
 
 .fslide-frame {
   position: relative;
-  width: 160px;
-  height: 120px;
+  width: 210px;
+  height: 158px;
   border-radius: 12px;
   overflow: hidden;
   border: 1.5px solid var(--card-border);
@@ -231,7 +231,7 @@
   }
 
   .fslide-frame {
-    width: 140px;
-    height: 105px;
+    width: 180px;
+    height: 135px;
   }
 }

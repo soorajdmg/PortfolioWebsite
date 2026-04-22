@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 import './Footer.css'
 
-// swap these out for your actual random-click photos
-import slide1 from '../assets/images/poses/cheer-pose.png'
-import slide2 from '../assets/images/poses/wink-pose.png'
-import slide3 from '../assets/images/poses/love-pose.png'
-import slide4 from '../assets/images/poses/think-pose.png'
-import slide5 from '../assets/images/poses/wave-pose.png'
-
-const slides = [slide1, slide2, slide3, slide4, slide5]
+// Cloudinary CDN URLs — replace with your actual cloud name and image IDs
+const slides = [
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860378/Boat-Ride_gkwsro.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860379/Man-Walking_bn6e5n.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860378/Cloudy-Beach_z4z5lf.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860379/Old-Building_xpqwcw.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860379/Train-Track_w7gxuy.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860379/Small-Island_tdaq8f.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860378/Docked-Ship_o2pxk3.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860378/Busy-Beach_i3ovqy.jpg',
+  'https://res.cloudinary.com/dmjxhnhbi/image/upload/v1776860378/Fishing-Boat_aaxh8n.jpg',
+]
 
 function PhotoSlide() {
   const [active, setActive] = useState(0)
