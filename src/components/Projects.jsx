@@ -11,7 +11,7 @@ const projects = [
     description: 'Lets you commit choices, create branches for "what if" scenarios, and visualize life as a commit history graph. Features decision commits, branching, a graphical timeline, and community engagement.',
     tags: ['React.js', 'Node.js', 'Firebase'],
     githubUrl: 'https://github.com/soorajdmg/gitlife',
-    liveUrl: 'https://gitlife-sooraj.onrender.com/',
+    liveUrl: 'https://gitlife-sooraj.vercel.app/',
   },
   {
     title: 'StudAI',
