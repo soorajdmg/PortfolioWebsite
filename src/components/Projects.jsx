@@ -18,7 +18,7 @@ const projects = [
     description: 'Personalized learning platform with scientific assessments, adaptive tests, stress management tools (Pomodoro, guided breathing), progress analytics, and AI-powered study coaching.',
     tags: ['React.js', 'Node.js', 'MongoDB', 'Gemini AI'],
     githubUrl: 'https://github.com/soorajdmg/studai',
-    liveUrl: 'https://studai-ewc9.onrender.com/',
+    liveUrl: 'https://studai-sooraj.vercel.app/',
   },
   {
     title: 'Beyond2048',
